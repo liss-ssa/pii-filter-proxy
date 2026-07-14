@@ -94,3 +94,10 @@ temp/
 # ==========================
 .DS_Store
 Thumbs.db
+
+# Local ML weights
+models/context-rubert-tiny2/*.safetensors
+models/context-rubert-tiny2/*.bin
+models/context-rubert-tiny2/tokenizer.json
+models/context-rubert-tiny2/vocab.txt
+models/base-rubert-tiny2/
