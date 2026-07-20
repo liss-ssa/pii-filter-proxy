@@ -17,7 +17,11 @@ class Settings(BaseSettings):
     inference_device: str = "auto"
     mask_organization_pii: bool = False
 
-    natasha_enabled: bool = True
+    ner_backend: str = "gliner2"
+    gliner2_enabled: bool = True
+    gliner2_model_name: str = "fastino/gliner2-privacy-filter-PII-multi"
+    gliner2_threshold: float = 0.55
+    natasha_enabled: bool = False
     context_classifier_enabled: bool = True
     context_model_dir: str = "models/context-rubert-tiny2"
     context_max_length: int = 192

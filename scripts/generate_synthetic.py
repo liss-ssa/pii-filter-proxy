@@ -45,10 +45,10 @@ def positive(i):
     inn=inn12(); sn=snils(); card=luhn('4')
     address=f'г. Москва, ул. {random.choice(STREETS)}, д. {random.randint(1,150)}, кв. {random.randint(1,300)}'
     templates=[
-      (f'Арендатор: {fio}, дата рождения: {dob}, {passport}, email {email}.', [('PERSON',fio),('DATE_OF_BIRTH',dob),('PASSPORT',passport),('EMAIL',email)]),
+      (f'Арендатор: {fio}, дата рождения: {dob}, {passport}, email {email}.', [('PERSON',fio),('DATE',dob),('PASSPORT',passport),('EMAIL',email)]),
       (f'Физическое лицо {fio}; телефон: {phone}; ИНН {inn}; СНИЛС {sn}.', [('PERSON',fio),('PHONE',phone),('INN_PERSON','ИНН '+inn),('SNILS','СНИЛС '+sn)]),
       (f'Гражданин {fio}, адрес регистрации: {address}, банковская карта {card}.', [('PERSON',fio),('ADDRESS',address),('BANK_CARD',card)]),
-      (f'Представитель: {fio}. Контакты: {email}, {phone}. Дата рождения {dob}.', [('PERSON',fio),('EMAIL',email),('PHONE',phone),('DATE_OF_BIRTH',dob)]),
+      (f'Представитель: {fio}. Контакты: {email}, {phone}. Дата рождения {dob}.', [('PERSON',fio),('EMAIL',email),('PHONE',phone),('DATE',dob)]),
     ]
     text,pairs=random.choice(templates); ents=[]; cursor=0
     for typ,val in pairs:

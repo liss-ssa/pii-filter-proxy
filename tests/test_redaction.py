@@ -10,10 +10,10 @@ def test_contract_dates_not_pii():
 def test_personal_block():
  t='Арендатор: Иванов Петр Сидорович, дата рождения: 12.03.1980, паспорт серии 4510 №123456, email ivan@test.ru'
  out,e=redact(t)
- for ph in ['[PERSON_1]','[DATE_OF_BIRTH_1]','[PASSPORT_1]','[EMAIL_1]']: assert ph in out
+ for ph in ['[PERSON_1]','[DATE_1]','[PASSPORT_1]','[EMAIL_1]']: assert ph in out
 
 def test_stable_placeholder():
  out,_=redact('Email: a@test.ru. Повторно a@test.ru.'); assert out.count('[EMAIL_1]')==2
 
-def test_ambiguous_review_candidate():
- e=eng.detect('Дата: 12.03.1980. Документ подписан сторонами.'); assert any(x.entity_type=='DATE' and x.score>=.35 for x in e)
+def test_ambiguous_document_date_is_not_masked():
+ e=eng.detect('Дата: 12.03.1980. Документ подписан сторонами.'); assert not any(x.entity_type in {'DATE'} for x in e)
